@@ -2,18 +2,37 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\IndexRequest;
 use App\Http\Requests\StoreAndUpdateLoanRequest;
 use App\Http\Resources\LoanResource;
 use App\Models\Loan;
+use Carbon\Carbon;
 
 class LoanController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(IndexRequest $request)
     {
-        //
+        $query = Loan::query();
+
+        $request->whenFilled('filter.created_at.from', function($from) use ($query) {
+            $from = Carbon::createFromTimestamp($from, config('app.timezone'))->toDateTimeString();
+            $query->where('created_at', '>=', $from);
+        });
+        $request->whenFilled('filter.created_at.to', function($to) use ($query) {
+            $to = Carbon::createFromTimestamp($to, config('app.timezone'))->toDateTimeString();
+            $query->where('created_at', '<=', $to);
+        });
+        $request->whenFilled('filter.amount.from', function($from) use ($query) {
+            $query->where('amount', '>=', $from);
+        });
+        $request->whenFilled('filter.amount.to', function($to) use ($query) {
+            $query->where('amount', '<=', $to);
+        });
+
+        return LoanResource::collection($query->get());
     }
 
     /**
@@ -37,7 +56,8 @@ class LoanController extends Controller
      */
     public function update(StoreAndUpdateLoanRequest $request, Loan $loan)
     {
-        //
+        $loan->update($request->validated());
+        return new LoanResource($loan);
     }
 
     /**
@@ -45,6 +65,7 @@ class LoanController extends Controller
      */
     public function destroy(Loan $loan)
     {
-        //
+        $loan->delete();
+        return LoanResource::collection(Loan::all());
     }
 }
