@@ -2,18 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\IndexRequest;
+use App\Http\Requests\IndexLoanRequest;
 use App\Http\Requests\StoreAndUpdateLoanRequest;
 use App\Http\Resources\LoanResource;
 use App\Models\Loan;
 use Carbon\Carbon;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class LoanController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Получение списка всех займов с базовыми фильтрами по дате создания и сумме
+     * @queryParam filter[created_at][from] integer Example: 1715927864
+     * @queryParam filter[created_at][to] integer Example: 1715940063
+     * @queryParam filter[amount][from] integer Example: 3000
+     * @queryParam filter[amount][to] integer Example: 4800
      */
-    public function index(IndexRequest $request)
+    public function index(IndexLoanRequest $request): AnonymousResourceCollection
     {
         $query = Loan::query();
 
@@ -36,34 +41,36 @@ class LoanController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Создание нового займа
+     * @bodyParam amount integer required The amount of the loan. Example: 3000
      */
-    public function store(StoreAndUpdateLoanRequest $request)
+    public function store(StoreAndUpdateLoanRequest $request): LoanResource
     {
         return new LoanResource(Loan::create(['amount' => $request->amount]));
     }
 
     /**
-     * Display the specified resource.
+     * Получение информации о займе
      */
-    public function show(Loan $loan)
+    public function show(Loan $loan): LoanResource
     {
         return new LoanResource($loan);
     }
 
     /**
-     * Update the specified resource in storage.
+     * Обновление информации о займе
+     * @bodyParam amount integer required The amount of the loan. Example: 3000
      */
-    public function update(StoreAndUpdateLoanRequest $request, Loan $loan)
+    public function update(StoreAndUpdateLoanRequest $request, Loan $loan): LoanResource
     {
         $loan->update($request->validated());
         return new LoanResource($loan);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Удаление займа
      */
-    public function destroy(Loan $loan)
+    public function destroy(Loan $loan): AnonymousResourceCollection
     {
         $loan->delete();
         return LoanResource::collection(Loan::all());

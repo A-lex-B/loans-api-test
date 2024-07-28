@@ -14,4 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::apiResource('loans', LoanController::class);
+Route::apiResource('loans', LoanController::class)->except('update');
+Route::put('loans/{loan}', [LoanController::class, 'update']);

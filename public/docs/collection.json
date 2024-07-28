@@ -1,0 +1,279 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "http:\/\/localhost"
+        }
+    ],
+    "info": {
+        "name": "API \u0434\u043b\u044f \u0443\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u044f \u0437\u0430\u0439\u043c\u0430\u043c\u0438",
+        "_postman_id": "2c73e96a-5ff4-47e2-b694-7c969d93133e",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Endpoints",
+            "description": "",
+            "item": [
+                {
+                    "name": "\u0421\u043e\u0437\u0434\u0430\u043d\u0438\u0435 \u043d\u043e\u0432\u043e\u0433\u043e \u0437\u0430\u0439\u043c\u0430",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/loans",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/loans"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"amount\":3000}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "\u041f\u043e\u043b\u0443\u0447\u0435\u043d\u0438\u0435 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0438 \u043e \u0437\u0430\u0439\u043c\u0435",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/loans\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/loans\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the loan."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "58"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":{\"id\":1,\"amount\":3000,\"created_at\":1715927079,\"updated_at\":1715927079}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "\u041e\u0431\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u0435 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0438 \u043e \u0437\u0430\u0439\u043c\u0435",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/loans\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/loans\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the loan."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"amount\":3000}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "\u0423\u0434\u0430\u043b\u0435\u043d\u0438\u0435 \u0437\u0430\u0439\u043c\u0430",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/loans\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/loans\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the loan."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "\u041f\u043e\u043b\u0443\u0447\u0435\u043d\u0438\u0435 \u0441\u043f\u0438\u0441\u043a\u0430 \u0432\u0441\u0435\u0445 \u0437\u0430\u0439\u043c\u043e\u0432 \u0441 \u0431\u0430\u0437\u043e\u0432\u044b\u043c\u0438 \u0444\u0438\u043b\u044c\u0442\u0440\u0430\u043c\u0438 \u043f\u043e \u0434\u0430\u0442\u0435 \u0441\u043e\u0437\u0434\u0430\u043d\u0438\u044f \u0438 \u0441\u0443\u043c\u043c\u0435",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/loans",
+                            "query": [
+                                {
+                                    "key": "filter%5Bcreated_at%5D%5Bfrom%5D",
+                                    "value": "1715927864",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "filter%5Bcreated_at%5D%5Bto%5D",
+                                    "value": "1715940063",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "filter%5Bamount%5D%5Bfrom%5D",
+                                    "value": "3000",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "filter%5Bamount%5D%5Bto%5D",
+                                    "value": "4800",
+                                    "description": "",
+                                    "disabled": false
+                                }
+                            ],
+                            "raw": "{{baseUrl}}\/api\/loans?filter%5Bcreated_at%5D%5Bfrom%5D=1715927864&filter%5Bcreated_at%5D%5Bto%5D=1715940063&filter%5Bamount%5D%5Bfrom%5D=3000&filter%5Bamount%5D%5Bto%5D=4800"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "59"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":[{\"id\":1,\"amount\":3000,\"created_at\":1715927079,\"updated_at\":1715927079},{\"id\":2,\"amount\":4200,\"created_at\":1715927864,\"updated_at\":1716216154},{\"id\":3,\"amount\":5000,\"created_at\":1715928273,\"updated_at\":1715928273},{\"id\":4,\"amount\":4800,\"created_at\":1715928967,\"updated_at\":1716216010},{\"id\":5,\"amount\":4500,\"created_at\":1715939944,\"updated_at\":1715939944},{\"id\":6,\"amount\":5000,\"created_at\":1715940063,\"updated_at\":1716219620},{\"id\":7,\"amount\":3500,\"created_at\":1715940344,\"updated_at\":1721917458}]}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "noauth"
+    }
+}
